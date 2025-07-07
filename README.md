@@ -73,10 +73,6 @@ If you'd like to contribute to the project, feel free to:
 - Submit pull requests with fixes or improvements
 - Help with documentation
 
-## License
-
-This project is released under an open source license. All license details will be specified in the LICENSE file.
-
 ---
 
 **Note**: This extension was created for educational and personal purposes. Use it responsibly and in compliance with the terms of service of the websites you monitor.
