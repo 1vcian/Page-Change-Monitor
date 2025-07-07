@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Page Change Monitor</title>
+  <style>
+    body {
+      width: 300px;
+      padding: 10px;
+      font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", Arial, sans-serif;
+    }
+    button {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #3367d6;
+    }
+    .status {
+      margin-top: 10px;
+      padding: 8px;
+      background-color: #f1f1f1;
+      border-radius: 4px;
+    }
+    input[type="number"] {
+      width: 60px;
+    }
+    label {
+      display: block;
+      margin: 10px 0;
+    }
+    small {
+      display: block;
+      color: #666;
+      font-size: 11px;
+      margin-top: 3px;
+    }
+    h2 {
+      margin: 0 0 15px 0;
+      color: #333;
+      text-align: center;
+    }
+    h3 {
+      margin: 15px 0 10px 0;
+      color: #333;
+      font-size: 16px;
+    }
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+    button:disabled:hover {
+      background-color: #ccc;
+    }
+    .active-sessions {
+      margin-top: 15px;
+      padding: 8px;
+      background-color: #f1f1f1;
+      border-radius: 4px;
+    }
+    .session-item {
+      margin: 10px 0;
+      padding: 8px;
+      background-color: white;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .session-info {
+      flex: 1;
+    }
+    .session-info p {
+      margin: 5px 0;
+      font-size: 12px;
+    }
+    .stop-session {
+      width: auto;
+      padding: 5px 10px;
+      margin-left: 10px;
+      background-color: #f44336;
+    }
+    .stop-session:hover {
+      background-color: #d32f2f;
+    }
+    .no-sessions {
+      font-style: italic;
+      color: #666;
+      text-align: center;
+    }
+    #refreshSessions {
+      margin-top: 10px;
+      background-color: #4caf50;
+    }
+    #refreshSessions:hover {
+      background-color: #388e3c;
+    }
+  </style>
+</head>
+<body>
+  <h2>🔍 Page Change Monitor</h2>
+  
+  <button id="startSelection">📋 Seleziona Area da Monitorare</button>
+  <button id="startMonitoring" disabled>▶️ Avvia Monitoraggio</button>
+  <button id="stopMonitoring" disabled>⏹️ Ferma Monitoraggio</button>
+  
+  <div class="status">
+    <p><strong>Stato:</strong> <span id="status">In attesa di selezione area</span></p>
+    <p><strong>Controlli effettuati:</strong> <span id="refreshCount">0</span></p>
+  </div>
+  
+  <div class="active-sessions">
+    <h3>Sessioni Attive</h3>
+    <div id="sessionsList">
+      <p class="no-sessions">Nessuna sessione attiva</p>
+    </div>
+    <button id="refreshSessions">🔄 Aggiorna Sessioni</button>
+  </div>
+  
+  <label>
+    ⏱️ Delay dopo caricamento pagina:
+    <input type="number" id="delayAfterLoad" value="3" min="1" max="30"> secondi
+    <small>Tempo di attesa dopo il caricamento della pagina prima di catturare lo screenshot</small>
+  </label>
+  
+  <label>
+    🎯 Soglia di rilevamento cambiamenti:
+    <input type="number" id="similarityThreshold" value="95" min="50" max="99" step="0.1"> %
+    <small>Percentuale di similarità sotto la quale viene rilevato un cambiamento (default: 95%)</small>
+  </label>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page Change Monitor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-area {
+            border: 2px dashed #007bff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            background: #f8f9fa;
+        }
+        .dynamic-content {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #2196f3;
+        }
+        .time-display {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .counter {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .status.online {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .status.offline {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Test Page Change Monitor</h1>
+        
+        <div class="test-area">
+            <h2>Area di Test per il Monitoraggio</h2>
+            <p>Seleziona quest'area con l'estensione per monitorare i cambiamenti.</p>
+            
+            <div class="dynamic-content">
+                <div class="time-display" id="current-time">
+                    Ora corrente: <span id="time"></span>
+                </div>
+            </div>
+            
+            <div class="counter">
+                <strong>Contatore:</strong> <span id="counter">0</span>
+                <button onclick="incrementCounter()">Incrementa</button>
+                <button onclick="resetCounter()">Reset</button>
+            </div>
+            
+            <div class="status online" id="status">
+                <strong>Stato:</strong> Sistema Online ✅
+            </div>
+            
+            <button onclick="changeContent()">Cambia Contenuto</button>
+            <button onclick="toggleStatus()">Cambia Stato</button>
+            <button onclick="addRandomText()">Aggiungi Testo Casuale</button>
+        </div>
+        
+        <div style="margin-top: 30px; padding: 20px; background: #e8f5e8; border-radius: 10px;">
+            <h3>📋 Istruzioni per il Test</h3>
+            <ol>
+                <li>Apri l'estensione Page Change Monitor</li>
+                <li>Clicca su "📋 Seleziona Area da Monitorare"</li>
+                <li>Seleziona l'area di test sopra (riquadro blu tratteggiato)</li>
+                <li>Imposta un delay di controllo (es. 3 secondi)</li>
+                <li>Avvia il monitoraggio</li>
+                <li>Usa i pulsanti sopra per modificare il contenuto</li>
+                <li>Osserva come l'estensione rileva i cambiamenti e apre la pagina di confronto</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        let counter = 0;
+        let isOnline = true;
+        
+        // Aggiorna l'ora ogni secondo
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('time').textContent = now.toLocaleTimeString('it-IT');
+        }
+        
+        // Incrementa il contatore
+        function incrementCounter() {
+            counter++;
+            document.getElementById('counter').textContent = counter;
+        }
+        
+        // Reset del contatore
+        function resetCounter() {
+            counter = 0;
+            document.getElementById('counter').textContent = counter;
+        }
+        
+        // Cambia il contenuto dinamicamente
+        function changeContent() {
+            const messages = [
+                'Contenuto modificato! 🎉',
+                'Nuovo messaggio di test 📝',
+                'Cambiamento rilevato! ⚡',
+                'Aggiornamento in corso... 🔄',
+                'Test completato con successo! ✅'
+            ];
+            
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            const timeDisplay = document.getElementById('current-time');
+            timeDisplay.innerHTML = `<strong>${randomMessage}</strong><br>Ora: ${new Date().toLocaleTimeString('it-IT')}`;
+        }
+        
+        // Cambia lo stato online/offline
+        function toggleStatus() {
+            const statusElement = document.getElementById('status');
+            isOnline = !isOnline;
+            
+            if (isOnline) {
+                statusElement.className = 'status online';
+                statusElement.innerHTML = '<strong>Stato:</strong> Sistema Online ✅';
+            } else {
+                statusElement.className = 'status offline';
+                statusElement.innerHTML = '<strong>Stato:</strong> Sistema Offline ❌';
+            }
+        }
+        
+        // Aggiungi testo casuale
+        function addRandomText() {
+            const randomTexts = [
+                'Testo aggiunto dinamicamente',
+                'Nuovo elemento inserito',
+                'Contenuto extra generato',
+                'Modifica automatica applicata'
+            ];
+            
+            const randomText = randomTexts[Math.floor(Math.random() * randomTexts.length)];
+            const newElement = document.createElement('div');
+            newElement.style.cssText = 'background: #fff3cd; padding: 8px; margin: 5px 0; border-radius: 4px; border-left: 3px solid #ffc107;';
+            newElement.textContent = `${randomText} - ${new Date().toLocaleTimeString('it-IT')}`;
+            
+            document.querySelector('.test-area').appendChild(newElement);
+        }
+        
+        // Avvia l'aggiornamento dell'ora
+        updateTime();
+        setInterval(updateTime, 1000);
+        
+        // Simula cambiamenti automatici ogni 30 secondi (opzionale)
+        // setInterval(() => {
+        //     if (Math.random() > 0.5) {
+        //         changeContent();
+        //     }
+        // }, 30000);
+    </script>
+</body>
+</html>
