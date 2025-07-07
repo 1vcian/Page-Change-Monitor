@@ -12,6 +12,18 @@ Page Change Monitor is a browser extension that automatically monitors changes i
 - **Customization**: Set the delay between checks and the sensitivity threshold for change detection.
 - **Multi-tab Management**: Monitor multiple pages simultaneously and manage all active sessions from a single interface.
 
+## Installation
+
+To install the extension:
+
+1. Clone the repository with the command:
+   ```bash
+   git clone https://github.com/1vcian/Page-Change-Monitor```
+2. Open Chrome and navigate to chrome://extensions/
+3. Enable "Developer mode" (toggle in the top right)
+4. Click on "Load unpacked" and select the cloned folder
+5. The extension will now be available in your browser toolbar 
+
 ## How It Works
 
 1. Click on the "Select Area to Monitor" button and drag your mouse to select the portion of the page you want to check.
@@ -40,7 +52,6 @@ We encourage the community to participate in the development to make this extens
 
 ## Use Cases
 
-- Monitor price changes on e-commerce sites
 - Check for updates on news sites or blogs
 - Verify product or service availability
 - Monitor changes in online documents or content
