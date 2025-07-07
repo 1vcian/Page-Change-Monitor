@@ -18,7 +18,7 @@ To install the extension:
 
 1. Clone the repository with the command:
    ```bash
-   git clone https://github.com/1vcian/Page-Change-Monitor```
+   git clone https://github.com/1vcian/Page-Change-Monitor
 2. Open Chrome and navigate to chrome://extensions/
 3. Enable "Developer mode" (toggle in the top right)
 4. Click on "Load unpacked" and select the cloned folder
